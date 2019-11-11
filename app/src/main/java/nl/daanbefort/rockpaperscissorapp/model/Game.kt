@@ -16,11 +16,11 @@ data class Game(
     @ColumnInfo(name = "date")
     var date: Date,
 
-    @ColumnInfo(name = "moveCpu")
-    var moveCpu: Move,
+    @ColumnInfo(name = "cpuMove")
+    var cpuMove: Move,
 
-    @ColumnInfo(name = "movePlayer")
-    var movePlayer: Move,
+    @ColumnInfo(name = "playerMove")
+    var playerMove: Move,
 
     @ColumnInfo(name = "result")
     var result: Result,

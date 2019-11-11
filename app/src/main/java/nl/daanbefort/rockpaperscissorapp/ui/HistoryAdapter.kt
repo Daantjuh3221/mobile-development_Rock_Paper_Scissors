@@ -24,8 +24,8 @@ class HistoryAdapter(private val games: List<Game>) : RecyclerView.Adapter<Histo
         fun bind(game: Game) {
             itemView.txtHistoryDate.text = game.date.toString()
             itemView.txtHistoryResult.text = game.result.message
-            itemView.imgHistoryCpu.setImageResource(game.moveCpu.image)
-            itemView.imgHistoryPlayer.setImageResource(game.movePlayer.image)
+            itemView.imgHistoryCpu.setImageResource(game.cpuMove.image)
+            itemView.imgHistoryPlayer.setImageResource(game.playerMove.image)
         }
     }
 }

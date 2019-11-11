@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import nl.daanbefort.rockpaperscissorapp.R
 import nl.daanbefort.rockpaperscissorapp.database.RockPaperScissorRepository
 import nl.daanbefort.rockpaperscissorapp.model.Game
@@ -35,15 +34,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_show_history -> {
                 startHistoryActivity()
@@ -61,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun initViews() {
+    private fun initViews() {
         imgRock.setOnClickListener {
             playGame(Move.ROCK)
         }
@@ -76,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         updateStatistics()
     }
 
-    fun updateStatistics() {
+    private fun updateStatistics() {
         mainScope.launch {
             val wins = rockPaperScissorRepository.countWins()
             val loses = rockPaperScissorRepository.countLoses()
@@ -85,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun playGame(playerMove : Move) {
+    private fun playGame(playerMove : Move) {
         imgPlayer.setImageResource(playerMove.image)
         val cpuMove = Move.getRandomMove();
         imgCpu.setImageResource(cpuMove.image)
@@ -94,8 +89,8 @@ class MainActivity : AppCompatActivity() {
         txtResultDisplay.setText(result.message)
 
         val game = Game(date = Date(),
-            moveCpu = cpuMove,
-            movePlayer = playerMove,
+            cpuMove = cpuMove,
+            playerMove = playerMove,
             result = result)
 
         mainScope.launch {
