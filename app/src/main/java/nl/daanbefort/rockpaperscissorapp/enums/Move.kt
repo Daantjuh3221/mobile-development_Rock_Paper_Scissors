@@ -17,23 +17,23 @@ enum class Move(val image : Int) {
         fun winner(playerMove : Move, cpuMove : Move) : Result {
             when(playerMove) {
                 ROCK -> {
-                    if (cpuMove.equals(SCISSOR))
+                    if (cpuMove == SCISSOR)
                         return Result.WIN
-                    if (cpuMove.equals(PAPER))
+                    if (cpuMove == PAPER)
                         return Result.LOSE
                     return Result.DRAW
                 }
                 PAPER -> {
-                    if (cpuMove.equals(ROCK))
+                    if (cpuMove == ROCK)
                         return Result.WIN
-                    if (cpuMove.equals(SCISSOR))
+                    if (cpuMove == SCISSOR)
                         return Result.LOSE
                     return Result.DRAW
                 }
                 SCISSOR -> {
-                    if (cpuMove.equals(PAPER))
+                    if (cpuMove == PAPER)
                         return Result.WIN
-                    if (cpuMove.equals(ROCK))
+                    if (cpuMove == ROCK)
                         return Result.LOSE
                     return Result.DRAW
                 }
